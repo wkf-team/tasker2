@@ -1,0 +1,37 @@
+{
+    "name": "wkfteam/task2",
+    "minimum-stability": "stable",
+    "require": {
+		"yiisoft/yii2-jui": "~2.0.0",
+        "yiisoft/yii2": ">=2.0.5",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-swiftmailer": "*",
+		"yiisoft/yii2-authclient": "~2.1.0",
+		"google/apiclient": "^2.0",
+        "ianikanov/yii2-wce": "dev-master"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
