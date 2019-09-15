@@ -49,7 +49,8 @@ class TicketController extends Controller
     public function actionIndex($table_view = false)
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Ticket::find()->where(['owner_user_id' => Yii::$app->user->id]),
+            'query' => Ticket::find()->where(['owner_user_id'=>Yii::$app->user->id])
+                ->andWhere(Ticket::getFilterByStatus()),
 			'pagination' => [
 				'pageSize' => 20,
 			],

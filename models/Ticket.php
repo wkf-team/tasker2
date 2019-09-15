@@ -66,6 +66,11 @@ class Ticket extends \yii\db\ActiveRecord
 		$ticket->order_num = Ticket::find()->select(['order_num'=>'IFNULL(max(order_num),0)'])->scalar();
 		return $ticket;
 	}
+    
+    public static function getFilterByStatus()
+    {
+        return 'status_id < 6 OR status_id = 6 AND `end_date` >= (NOW() - INTERVAL 14 DAY)';
+    }
 	
 	public function getWorkflowActions()
 	{
